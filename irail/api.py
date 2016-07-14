@@ -94,6 +94,11 @@ class iRailAPI:
     return self.__format.parse_schedules(response)
 
   def get_schedules(self, fromStation, toStation, date=None, time=None, timeSel=None, typesOfTransport=None):
+    """Get the train schedules.
+    
+    Args: 
+        param1 (str): fromStation
+    """
     return self.get_schedule_by_names(fromStation.name(), toStation.name(), date, time, timeSel, typesOfTransport)
 
   def get_liveboard_by_name(self, name, date=None, time=None, arrdep='DEP'):
