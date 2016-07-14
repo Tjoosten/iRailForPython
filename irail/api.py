@@ -86,7 +86,16 @@ class iRailAPI:
     return [station for station in stations.stations() if station.name().lower().startswith(start.lower())]
 
   def get_schedules_by_names(self, fromStation, toStation, date=None, time=None, timeSel=None, types=None):
-    """Get the connections between to stations given by name"""
+    """Get the connections between to stations given by name
+    
+    Args: 
+        param1 (str):  fromStation 
+        param2 (str):  toStation
+        param3 (null): date
+        param4 (null): time
+        param5 (null): timeSel 
+        param6 (null): types
+    """
     args = {}
     args['from'] = fromStation
     args['to'] = toStation
@@ -97,7 +106,12 @@ class iRailAPI:
     """Get the train schedules.
     
     Args: 
-        param1 (str): fromStation
+        param1 (str):  fromStation
+        param2 (str):  toStation
+        param3 (null): date
+        param4 (null): time
+        param5 (null): timeSel 
+        param6 (null): typesOfTransport
     """
     return self.get_schedule_by_names(fromStation.name(), toStation.name(), date, time, timeSel, typesOfTransport)
 
@@ -112,6 +126,11 @@ class iRailAPI:
     return self.__format.parse_liveboard(response)
 
   def get_vehicle_by_id(self, id):
+    """Get the vehicle by his ID. 
+    
+    Args: 
+        param1 (int): id
+    """
     args = {'id': id}
     response = self.do_request(URLS['vehicle'], args)
     return self.__format.parse_vehicle(response)
